@@ -12,28 +12,14 @@ jobs:
     container:  
       image: mcr.microsoft.com/playwright/python:v1.44.0-jammy  
     steps:  
-      - uses: actions/checkout@v3 
-  
-      # 设置Python版本  
-      - name: Set up Python  
-        uses: actions/setup-python@v3 
-        with:  
-          python-version: '3.11'  
-  
-      # 创建虚拟环境  
-      - name: Create virtual environment  
-        run: python -m venv venv  
-  
-      # 激活虚拟环境  
-      - name: Activate virtual environment  
-        run: source venv/bin/activate  
+      - uses: actions/checkout@v3  
   
       # 安装依赖项  
       - name: Install dependencies  
         run: |  
           pip install --upgrade pip  
           pip install -r requirements.txt  # 假设文件名是requirements.txt  
-          pip install -e .  # 如果你有一个可编辑的安装需求  
+          # pip install -e .  # 如果你有一个可编辑的安装需求，可以取消注释这行  
    
       # 运行测试  
       - name: Run Playwright tests  
