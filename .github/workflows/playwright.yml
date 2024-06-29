@@ -12,11 +12,11 @@ jobs:
     container:  
       image: mcr.microsoft.com/playwright/python:v1.44.0-jammy  
     steps:  
-      - uses: actions/checkout@v4  
+      - uses: actions/checkout@v3 
   
       # 设置Python版本  
       - name: Set up Python  
-        uses: actions/setup-python@v4  
+        uses: actions/setup-python@v3 
         with:  
           python-version: '3.11'  
   
