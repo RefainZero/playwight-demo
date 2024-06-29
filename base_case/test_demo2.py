@@ -12,4 +12,4 @@ from playwright.sync_api import Page, expect, sync_playwright
 
 def test_navigationCnblogs(page: Page):
     page.goto("https://www.cnblogs.com/longronglang")
-    expect(page).to_have_title(re.compile("久曲健"))
+    expect(page).to_have_title(re.compile("久曲健11111111111"))
