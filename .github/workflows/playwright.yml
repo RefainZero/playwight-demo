@@ -12,18 +12,30 @@ jobs:
     container:  
       image: mcr.microsoft.com/playwright/python:v1.44.0-jammy  
     steps:  
-      - uses: actions/checkout@v3  
+      - uses: actions/checkout@v4  
   
+      # 设置Python版本  
       - name: Set up Python  
-        uses: actions/setup-python@v3  
+        uses: actions/setup-python@v4  
         with:  
           python-version: '3.11'  
   
+      # 安装依赖项  
       - name: Install dependencies  
-        run: | 
-          sudo pip install --upgrade pip
-          sudo pip install --no-cache-dir -r requirements.txt  
-          sudo pip install -e .  
+        run: |  
+          # 升级pip（如果需要）  
+          python -m pip install --upgrade pip  
+          # 确保在正确的目录执行命令（通常是仓库的根目录）  
+          pip install -r requirements.txt  # 注意这里假设文件名是 requirements.txt 而不是 local-requirements.txt  
+          pip install -e .  # 如果你有一个可编辑的安装需求  
   
+      # 运行测试  
       - name: Run Playwright tests  
-        run: pytest
+        run: pytest  
+        env:  
+          # 通常不需要设置HOME环境变量为/root，但如果你有特殊需求可以设置  
+          # 注意：这可能会干扰Playwright的行为，因为它可能需要访问用户的主目录  
+          # HOME: /root  
+  
+
+  
