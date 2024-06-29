@@ -19,17 +19,10 @@ jobs:
         with:  
           python-version: '3.11'  
   
-      # 更改工作目录到仓库的根目录（如果需要的话）  
-      - name: Change working directory  
-        run: cd $(pwd)  
-  
       - name: Install dependencies  
         run: |  
-          # 禁用pip缓存或更改到用户可写的目录  
           pip install --no-cache-dir -r local-requirements.txt  
           pip install -e .  
   
       - name: Run Playwright tests  
-        run: pytest  
-  
-# 注意：如果local-requirements.txt文件不存在于仓库的根目录，你需要更改上面的命令以指向正确的路径。
+        run: pytest
